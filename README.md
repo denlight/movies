@@ -19,6 +19,10 @@ yarn build
 ```
 yarn lint
 ```
+### E2E testing
+```
+yarn test:e2e
+```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

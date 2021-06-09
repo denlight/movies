@@ -1,28 +1,46 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-row class="body-container">
+
+      <v-col cols="3">
+        <SidebarNav/>
+      </v-col>
+ 
+      <v-col cols="9">
+        <router-view/>
+      </v-col>
+
+    </v-row>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {mapActions} from 'vuex'
+import SidebarNav from './components/SidebarNav.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    SidebarNav
+  },
+  methods: {
+    ...mapActions([
+      'init'
+    ])
+  },
+  async mounted() {
+    await this.init()
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.body-container {
+  position: relative;
+  max-height: 100vh;
+}
+.col {
+  max-height: 100%;
 }
 </style>
